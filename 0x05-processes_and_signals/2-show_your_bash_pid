@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # displaying bash process instances running
 # shellcheck disable=SC2009
 
