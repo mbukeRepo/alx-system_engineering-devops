@@ -1,0 +1,4 @@
+#!/bin/bash
+# displays bash processes running with their pid
+
+pgrep bash -l
