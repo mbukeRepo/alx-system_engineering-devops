@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# sending a KILL signal
 
 pkill -SIGKILL 7-highlander

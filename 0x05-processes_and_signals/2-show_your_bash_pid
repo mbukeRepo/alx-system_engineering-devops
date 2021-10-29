@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# displaying bash process instances running
 # shellcheck disable=SC2009
 
 ps -aux | grep bash

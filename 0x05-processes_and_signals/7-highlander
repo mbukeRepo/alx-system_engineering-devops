@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# infinite displaying and catching SIGTERM signal
 
 while true
 do
