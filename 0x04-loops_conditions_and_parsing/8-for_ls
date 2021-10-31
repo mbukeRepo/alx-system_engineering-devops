@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# displays files in a directory
+
+list=$(ls)
+
+for file in $list;
+do
+    echo $file | cut -d '-' -f2
+done
+
