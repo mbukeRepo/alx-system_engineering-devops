@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# changes localhost to 127.0.0.1 and facebook to 8.8.8.8
+
+cp /etc/hosts ~/host.new
+echo "127.0.0.2		localhost" > ~/host.new
+echo "8.8.8.8		facebook.com" >> ~/host.new
+cp -f ~/host.new /etc/hosts
