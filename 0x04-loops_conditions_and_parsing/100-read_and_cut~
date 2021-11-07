@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# reading from a file and print line by line
+
+while read psswd;
+do
+	echo "$psswd" | cut -d ":" -f1,3,6
+done < "/etc/passwd"
