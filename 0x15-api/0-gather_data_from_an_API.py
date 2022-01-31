@@ -7,18 +7,21 @@
 import requests
 import sys
 
-base_url = "https://jsonplaceholder.typicode.com"
-todos = requests.get(base_url + "/users/{}/todos".format(sys.argv[1])).json()
-done = {}
+if __name__ == "__main__":
+    base_url = "https://jsonplaceholder.typicode.com"
+    todos = requests.get(base_url + "/users/{}/todos"
+                         .format(sys.argv[1])).json()
+    done = {}
+    
+    for todo in todos:
+        done.setdefault(todo["userId"], [])
+        if todo["completed"]:
+            done[todo["userId"]].append(todo["title"])
 
-for todo in todos:
-    done.setdefault(todo["userId"], [])
-    if todo["completed"]:
-        done[todo["userId"]].append(todo["title"])
-
-for id, completed in done.items():
-    username = requests.get(base_url + "/users/{}".format(id)).json()["name"]
-    print("Employee {} is done with tasks({}/20):"
-          .format(username, len(completed)))
-    for c in completed:
-        print("    {}".format(c))
+    for id, completed in done.items():
+        username = requests.get(base_url + "/users/{}"
+                                .format(id)).json()["name"]
+        print("Employee {} is done with tasks({}/20):"
+              .format(username, len(completed)))
+        for c in completed:
+            print("    {}".format(c))
