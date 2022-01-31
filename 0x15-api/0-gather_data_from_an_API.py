@@ -5,9 +5,10 @@
 """
 
 import requests
+import sys
 
 base_url = "https://jsonplaceholder.typicode.com"
-todos = requests.get(base_url + "/todos").json()
+todos = requests.get(base_url + "/users/{}/todos".format(sys.argv[1])).json()
 done = {}
 
 for todo in todos:
