@@ -14,9 +14,9 @@ if __name__ == "__main__":
     done = {}
     
     for todo in todos:
-        done.setdefault(todo["userId"], [])
-        if todo["completed"]:
-            done[todo["userId"]].append(todo["title"])
+        done.setdefault(todo.get("userId"), [])
+        if todo.get("completed"):
+            done.get(todo.get("userId")).append(todo.get("title"))
 
     for id, completed in done.items():
         username = requests.get(base_url + "/users/{}"
