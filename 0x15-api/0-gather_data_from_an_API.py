@@ -13,7 +13,8 @@ done = {}
 
 for todo in todos:
     done.setdefault(todo["userId"], [])
-    done[todo["userId"]].append(todo["title"])
+    if todo["completed"]:
+        done[todo["userId"]].append(todo["title"])
 
 for id, completed in done.items():
     username = requests.get(base_url + "/users/{}".format(id)).json()["name"]
