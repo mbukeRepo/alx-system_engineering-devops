@@ -1,17 +1,15 @@
 #!/usr/bin/python3
-""" fetches todos """
-
+"""Returns to-do list information for a given employee ID."""
 import requests
 import sys
 
 if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com"
+    user = requests.get(base_url + "/users/{}".format(sys.argv[1])).json()
     todos = requests.get(base_url + "/users/{}/todos"
                          .format(sys.argv[1])).json()
-    username = requests.get(base_url + "/users/{}"
-                            .format(sys.argv[1])).json().get("name")
-    print(username)
-    completed = [todo.get("title") for todo in todos if todo.get("completed")]
+
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
     print("Employee {} is done with tasks({}/{}):".format(
-        username, len(completed), len(todos)))
+        user.get("name"), len(completed), len(todos)))
     [print("\t {}".format(c)) for c in completed]
